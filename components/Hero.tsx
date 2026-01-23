@@ -124,7 +124,7 @@ const Hero: React.FC = () => {
             </button>
             
             <a 
-                href="/Assets/cvme.pdf"
+                href="/cvme.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="h-12 px-8 rounded-full bg-brand-500/10 border border-brand-500/50 text-brand-300 font-bold hover:bg-brand-500 hover:text-white transition-all flex items-center gap-2 group shadow-[0_0_20px_rgba(139,92,246,0.2)] hover:shadow-[0_0_40px_rgba(139,92,246,0.6)] relative overflow-hidden w-full sm:w-auto justify-center"

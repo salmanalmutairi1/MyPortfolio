@@ -321,11 +321,28 @@ body { color: var(--text-primary); }
 }
 
 /* Hero name letter reveal */
-.letter-reveal { display: inline-block; overflow: hidden; vertical-align: top; line-height: 0.95; }
+.letter-reveal {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+  line-height: 0.95;
+  /* Reserve room for descenders so the mask doesn't clip glyph tails */
+  padding-bottom: 0.18em;
+}
 .letter-reveal > span {
   display: inline-block;
-  transform: translateY(102%);
+  transform: translateY(110%);
   animation: maskRise 700ms var(--ease-out) forwards;
+}
+
+/* Arabic needs extra vertical room — final-form ya/ra/lam/qaf carry deep descenders
+   well below the baseline. Loosen the mask box and the leading. */
+.font-arabic .letter-reveal,
+[lang="ar"] .letter-reveal,
+[dir="rtl"] .letter-reveal {
+  line-height: 1.18;
+  padding-bottom: 0.32em;
+  vertical-align: baseline;
 }
 
 /* ============================================================

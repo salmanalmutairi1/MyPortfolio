@@ -101,14 +101,15 @@ const Hero: React.FC = () => {
               language === 'ar' ? 'font-arabic' : ''
             }`}
             style={{
-              fontWeight: language === 'ar' ? 500 : 500,
+              fontWeight: 500,
               fontSize:
                 language === 'ar'
-                  ? 'clamp(3rem, 11vw, 10.5rem)'
+                  ? 'clamp(2.75rem, 10vw, 9.5rem)'
                   : 'clamp(3.5rem, 13.5vw, 13rem)',
-              lineHeight: language === 'ar' ? 1.12 : 0.9,
+              lineHeight: language === 'ar' ? 1.25 : 0.9,
               letterSpacing: language === 'ar' ? '0' : '-0.05em',
               fontFeatureSettings: language === 'ar' ? '"calt" 1, "liga" 1' : '"ss01" 1, "calt" 1',
+              paddingBottom: language === 'ar' ? '0.15em' : 0,
             }}
             aria-label={t.hero.name}
           >

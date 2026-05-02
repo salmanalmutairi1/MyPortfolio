@@ -256,7 +256,7 @@ const Hero: React.FC = () => {
               <span>{t.hero.cta.contact}</span>
             </button>
             <a
-              href="/cvme.pdf"
+              href="/Salman_Almutairi_CV.pdf"
               target="_blank"
               rel="noopener noreferrer"
               className="btn-brutal btn-brutal-accent"

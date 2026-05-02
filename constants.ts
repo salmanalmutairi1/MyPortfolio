@@ -102,9 +102,8 @@ export const TRANSLATIONS: Record<Language, Translation> = {
         "Specializing in both mobile and web application development, I focus on creating seamless user experiences backed by scalable architecture. I am currently studying Software Engineering at King Saud University and am actively seeking a Co-op opportunity to apply my skills in a professional setting."
       ],
       stats: [
-        { label: "Years Exp", value: "2+" },
         { label: "Projects", value: "10+" },
-        { label: "GPA", value: "4.8" }, 
+        { label: "GPA", value: "+4.5" }, 
       ]
     },
     skills: {
@@ -397,9 +396,8 @@ export const TRANSLATIONS: Record<Language, Translation> = {
         "متخصص في تطوير تطبيقات الويب والجوال، وأركز على تجربة مستخدم سلسة مع بنية قابلة للتوسع. حالياً أدرس هندسة البرمجيات في جامعة الملك سعود وأدور فرصة تدريب تعاوني (Co-op) أطبق فيها اللي تعلمته."
       ],
       stats: [
-        { label: "سنوات خبرة", value: "+2" },
         { label: "مشاريع", value: "+10" },
-        { label: "المعدل", value: "4.8" },
+        { label: "المعدل", value: "+4.5" },
       ]
     },
     skills: {

@@ -77,7 +77,7 @@ const Hero: React.FC = () => {
             transition={{ duration: 0.5, delay: 0.1, ease: EASE_OUT }}
             className="flex items-center gap-3 mono-meta"
           >
-            <span className="hidden sm:inline">{language === 'ar' ? 'متاح للتدريب التعاوني' : 'OPEN FOR CO-OP'}</span>
+            <span className="hidden sm:inline">{language === 'ar' ? 'متاح للتدريب التعاوني' : 'Open for Co-op'}</span>
             <span className="inline-block w-2 h-2 bg-[var(--accent)]" aria-hidden="true" />
           </motion.div>
         </div>

@@ -80,7 +80,7 @@ const Navbar: React.FC = () => {
           <span>SA</span>
           <span className="hidden sm:inline opacity-60">/</span>
           <span className="hidden sm:inline text-[var(--text-secondary)] group-hover:text-[var(--text-primary)] transition-colors">
-            {language === Language.AR ? 'سلمان المطيري' : 'Salman Almutairi'}
+            {language === Language.AR ? 'سلمان' : 'Salman'}
           </span>
         </button>
 

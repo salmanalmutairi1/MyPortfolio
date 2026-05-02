@@ -51,10 +51,10 @@ const About: React.FC = () => {
           <Reveal delay={0.15}>
             <div className="mt-10 flex flex-wrap gap-3">
               <span className="px-3 py-2 border border-[var(--border-strong)] mono-meta text-[var(--text-primary)]">
-                {dir === 'rtl' ? 'جامعة الملك سعود' : 'KING SAUD UNIVERSITY'}
+                {dir === 'rtl' ? 'جامعة الملك سعود' : 'King Saud University'}
               </span>
               <span className="px-3 py-2 border border-[var(--accent)] mono-meta text-[var(--accent)]">
-                {dir === 'rtl' ? 'هندسة البرمجيات' : 'SOFTWARE ENGINEERING'}
+                {dir === 'rtl' ? 'هندسة البرمجيات' : 'Software Engineering'}
               </span>
             </div>
           </Reveal>

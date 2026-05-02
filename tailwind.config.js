@@ -12,46 +12,55 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Inter', 'sans-serif'],
-        mono: ['JetBrains Mono', 'monospace']
+        sans: ['"Inter Tight"', 'system-ui', 'sans-serif'],
+        display: ['Fraunces', 'Georgia', 'serif'],
+        mono: ['"JetBrains Mono"', 'monospace'],
+        arabic: ['"IBM Plex Sans Arabic"', 'sans-serif'],
       },
       colors: {
-        brand: {
-          50: '#f5f3ff',
-          100: '#ede9fe',
-          200: '#ddd6fe',
-          300: '#c4b5fd',
-          400: '#a78bfa',
-          500: '#8b5cf6',
-          600: '#7c3aed',
-          700: '#6d28d9',
-          800: '#5b21b6',
-          900: '#4c1d95',
-          950: '#2e1065'
-        },
+        bg: '#0A0A0A',
+        bgElevated: '#131313',
+        ink: '#F5F2EC',
+        muted: '#A8A39A',
+        soft: '#5C5852',
         accent: {
-          DEFAULT: '#6366f1',
-          glow: '#818cf8'
+          DEFAULT: '#FF4D1F',
+          soft: 'rgba(255,77,31,0.14)'
+        },
+        // legacy aliases preserved so existing utility classes don't break
+        brand: {
+          50:  '#fff1ec',
+          100: '#ffded1',
+          200: '#ffb89d',
+          300: '#ff8e64',
+          400: '#ff6a3a',
+          500: '#FF4D1F',
+          600: '#e23a10',
+          700: '#b82a08',
+          800: '#7a1c05',
+          900: '#3d0e02',
+          950: '#1f0701'
         }
       },
+      borderRadius: {
+        DEFAULT: '2px',
+        sm: '2px',
+        md: '2px',
+        lg: '2px',
+        xl: '2px',
+        '2xl': '2px',
+        '3xl': '2px',
+      },
+      boxShadow: {
+        none: 'none',
+      },
       animation: {
-        float: 'float 6s ease-in-out infinite',
-        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-        cursor: 'cursor .75s step-end infinite',
-        aurora: 'aurora 10s linear infinite alternate'
+        cursor: 'cursor 0.85s steps(2) infinite',
       },
       keyframes: {
-        float: {
-          '0%, 100%': { transform: 'translateY(0)' },
-          '50%': { transform: 'translateY(-20px)' }
-        },
         cursor: {
-          '0%, 100%': { opacity: '1' },
-          '50%': { opacity: '0' }
-        },
-        aurora: {
-          '0%': { backgroundPosition: '50% 50%', filter: 'hue-rotate(0deg)' },
-          '100%': { backgroundPosition: '100% 50%', filter: 'hue-rotate(20deg)' }
+          '0%, 49%':   { opacity: '1' },
+          '50%, 100%': { opacity: '0' },
         }
       }
     }

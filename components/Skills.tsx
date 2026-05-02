@@ -1,32 +1,32 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useLanguage } from '../services/LanguageContext';
-import { ExternalLink } from 'lucide-react';
 
 const Skills: React.FC = () => {
   const { t } = useLanguage();
 
   return (
-    <section id="skills" className="py-20 bg-black border-y border-white/5 overflow-hidden">
-      <div className="container max-w-7xl mx-auto px-6 mb-10 flex items-center justify-between">
-          <h2 className="text-sm font-bold text-gray-500 uppercase tracking-widest">{t.skills.title}</h2>
-          <div className="h-px bg-white/10 flex-1 ml-6" />
+    <section
+      id="skills"
+      className="relative border-b border-[var(--border)] py-20 md:py-28 overflow-hidden"
+    >
+      <div className="max-w-[1500px] mx-auto px-6 lg:px-12 mb-12 flex items-center gap-6">
+        <span className="mono-meta whitespace-nowrap">[ 03 / STACK ]</span>
+        <span className="hairline flex-1" aria-hidden="true" />
+        <h2 className="font-mono text-[11px] uppercase tracking-[0.22em] text-[var(--text-secondary)]">
+          {t.skills.title}
+        </h2>
       </div>
 
-      {/* Infinite Scroll Container */}
+      {/* Infinite mono ticker */}
       <div className="relative w-full overflow-hidden mask-gradient-x" dir="ltr">
-        <div className="flex gap-4 w-max hover:pause-animation">
-          {[...new Array(3)].map((_, arrayIndex) => (
+        <div className="flex w-max hover:pause-animation">
+          {[0, 1, 2].map(arrayIndex => (
             <motion.div
               key={arrayIndex}
-              className="flex gap-4"
-              animate={{ x: "-50%" }}
-              transition={{ 
-                duration: 60,
-                repeat: Infinity, 
-                ease: "linear",
-                repeatType: "loop"
-              }}
+              className="flex"
+              animate={{ x: '-50%' }}
+              transition={{ duration: 65, repeat: Infinity, ease: 'linear', repeatType: 'loop' }}
             >
               {t.skills.list.map((skill, index) => (
                 <a
@@ -34,31 +34,28 @@ const Skills: React.FC = () => {
                   href={skill.url}
                   target="_blank"
                   rel="noreferrer"
-                  className="group relative flex items-center gap-3 px-5 py-3 rounded-lg bg-white/5 hover:bg-white/10 border border-white/5 hover:border-brand-500/30 transition-all cursor-pointer min-w-[160px]"
+                  className="group flex items-center gap-3 px-5 lg:px-7 h-16 border-l border-[var(--border)] last:border-r-0 hover:bg-[var(--bg-elevated)] transition-colors min-w-[180px]"
                 >
-                  <div className="w-6 h-6 relative flex items-center justify-center grayscale group-hover:grayscale-0 transition-all opacity-70 group-hover:opacity-100">
-                     <img 
-                       src={`https://cdn.simpleicons.org/${skill.iconSlug}/white`} 
-                       alt={skill.name}
-                       className="w-full h-full object-contain"
-                       loading="lazy"
-                     />
+                  <span className="mono-meta text-[var(--text-muted)] group-hover:text-[var(--accent)] transition-colors">
+                    {String(index + 1).padStart(2, '0')}
+                  </span>
+                  <div className="w-5 h-5 relative grayscale opacity-60 group-hover:opacity-100 group-hover:grayscale-0 transition">
+                    <img
+                      src={`https://cdn.simpleicons.org/${skill.iconSlug}/F5F2EC`}
+                      alt=""
+                      className="w-full h-full object-contain"
+                      loading="lazy"
+                    />
                   </div>
-                  
-                  <span className="text-sm font-medium text-gray-400 group-hover:text-white transition-colors">{skill.name}</span>
+                  <span className="font-mono text-[12px] uppercase tracking-[0.12em] text-[var(--text-secondary)] group-hover:text-[var(--text-primary)] transition-colors whitespace-nowrap">
+                    {skill.name}
+                  </span>
                 </a>
               ))}
             </motion.div>
           ))}
         </div>
       </div>
-      
-      <style>{`
-        .mask-gradient-x {
-          mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
-          -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
-        }
-      `}</style>
     </section>
   );
 };

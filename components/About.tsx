@@ -1,46 +1,64 @@
 import React from 'react';
-import { motion } from 'framer-motion';
 import { useLanguage } from '../services/LanguageContext';
+import { SectionHeader, Reveal } from './ui/Brutalist';
 
 const About: React.FC = () => {
   const { t, dir } = useLanguage();
 
   return (
-    <section id="about" className="py-16 md:py-24 relative overflow-hidden bg-black">
-      <div className="container max-w-7xl mx-auto px-6 relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6 }}
-        >
-          <div className="flex flex-col items-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              <span className="bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-500">
-                {t.about.title}
-              </span>
-            </h2>
-            <div className="w-16 h-1 bg-brand-500 rounded-full" />
-          </div>
+    <section
+      id="about"
+      className="relative border-b border-[var(--border)] py-20 md:py-28"
+    >
+      <div className="max-w-[1500px] mx-auto px-6 lg:px-12 grid grid-cols-12 gap-y-10 gap-x-6 lg:gap-x-10">
+        <div className="col-span-12 lg:col-span-5">
+          <SectionHeader
+            index="02"
+            label="About"
+            title={t.about.title}
+          />
+        </div>
 
-          <div className="max-w-3xl mx-auto">
-            {/* Content Text */}
-            <div className={`space-y-6 text-lg text-gray-400 leading-relaxed ${dir === 'rtl' ? 'text-right' : 'text-left'}`}>
+        <div className="col-span-12 lg:col-span-7 lg:pt-32">
+          <Reveal>
+            <div
+              className={`space-y-6 ${dir === 'rtl' ? 'text-right' : 'text-left'}`}
+            >
               {t.about.content.map((paragraph, index) => (
-                <p key={index}>{paragraph}</p>
+                <p
+                  key={index}
+                  className="text-lg md:text-xl text-[var(--text-secondary)] leading-[1.7]"
+                >
+                  {paragraph}
+                </p>
               ))}
-              
-              <div className="pt-4 flex flex-wrap gap-4 justify-center">
-                 <div className="px-4 py-2 rounded-full border border-brand-500/30 bg-brand-500/10 text-brand-300 text-sm">
-                   King Saud University
-                 </div>
-                 <div className="px-4 py-2 rounded-full border border-white/10 bg-white/5 text-gray-300 text-sm">
-                   Software Engineering
-                 </div>
-              </div>
             </div>
-          </div>
-        </motion.div>
+          </Reveal>
+
+          <Reveal delay={0.1}>
+            <div className="mt-12 grid grid-cols-2 md:grid-cols-3 border-y border-[var(--border)] divide-x divide-[var(--border)]">
+              {t.about.stats.map((s, i) => (
+                <div key={i} className="py-6 px-5 first:ps-0">
+                  <div className="font-display text-4xl md:text-5xl text-[var(--text-primary)] leading-none">
+                    {s.value}
+                  </div>
+                  <div className="mono-label mt-3">{s.label}</div>
+                </div>
+              ))}
+            </div>
+          </Reveal>
+
+          <Reveal delay={0.15}>
+            <div className="mt-10 flex flex-wrap gap-3">
+              <span className="px-3 py-2 border border-[var(--border-strong)] mono-meta text-[var(--text-primary)]">
+                {dir === 'rtl' ? 'جامعة الملك سعود' : 'KING SAUD UNIVERSITY'}
+              </span>
+              <span className="px-3 py-2 border border-[var(--accent)] mono-meta text-[var(--accent)]">
+                {dir === 'rtl' ? 'هندسة البرمجيات' : 'SOFTWARE ENGINEERING'}
+              </span>
+            </div>
+          </Reveal>
+        </div>
       </div>
     </section>
   );

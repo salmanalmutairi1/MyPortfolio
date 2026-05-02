@@ -1,6 +1,53 @@
-@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,700;0,9..144,900;1,9..144,400&family=Inter+Tight:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&display=swap');
+/* Self-hosted variable fonts (bundled by Vite from node_modules — no external CDN) */
+@import "@fontsource-variable/fraunces/index.css";
+@import "@fontsource-variable/inter-tight/index.css";
+@import "@fontsource-variable/jetbrains-mono/index.css";
+@import "@fontsource/ibm-plex-sans-arabic/400.css";
+@import "@fontsource/ibm-plex-sans-arabic/500.css";
+@import "@fontsource/ibm-plex-sans-arabic/700.css";
+
 @import "tailwindcss";
 @config "../tailwind.config.js";
+
+/* ------------------------------------------------------------
+   Fallback @font-face declarations with size-adjust
+   These tune the system-font fallback so that the substituted
+   glyphs occupy the same space as the real face — eliminating
+   layout shift (CLS) when the woff2 finishes loading.
+   ------------------------------------------------------------ */
+@font-face {
+  font-family: 'Fraunces Fallback';
+  src: local('Georgia');
+  font-display: swap;
+  ascent-override: 92%;
+  descent-override: 22%;
+  line-gap-override: 0%;
+  size-adjust: 102%;
+}
+@font-face {
+  font-family: 'Inter Tight Fallback';
+  src: local('Arial');
+  font-display: swap;
+  ascent-override: 96%;
+  descent-override: 22%;
+  line-gap-override: 0%;
+  size-adjust: 100%;
+}
+@font-face {
+  font-family: 'JetBrains Mono Fallback';
+  src: local('Menlo'), local('Consolas');
+  font-display: swap;
+  ascent-override: 90%;
+  descent-override: 22%;
+  line-gap-override: 0%;
+  size-adjust: 100%;
+}
+@font-face {
+  font-family: 'IBM Plex Sans Arabic Fallback';
+  src: local('Tahoma');
+  font-display: swap;
+  size-adjust: 100%;
+}
 
 /* ============================================================
    BRUTALIST EDITORIAL · DARK
@@ -25,10 +72,10 @@
   --t-reveal: 800ms;
   --t-hero:  1600ms;
 
-  --display-font: 'Fraunces', 'IBM Plex Sans Arabic', Georgia, serif;
-  --body-font:    'Inter Tight', 'IBM Plex Sans Arabic', system-ui, sans-serif;
-  --mono-font:    'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
-  --arabic-font:  'IBM Plex Sans Arabic', 'Inter Tight', sans-serif;
+  --display-font: 'Fraunces Variable', 'Fraunces Fallback', 'IBM Plex Sans Arabic', Georgia, serif;
+  --body-font:    'Inter Tight Variable', 'Inter Tight Fallback', 'IBM Plex Sans Arabic', system-ui, sans-serif;
+  --mono-font:    'JetBrains Mono Variable', 'JetBrains Mono Fallback', ui-monospace, SFMono-Regular, Menlo, monospace;
+  --arabic-font:  'IBM Plex Sans Arabic', 'IBM Plex Sans Arabic Fallback', 'Inter Tight Variable', sans-serif;
 }
 
 /* ============================================================

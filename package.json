@@ -9,6 +9,10 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@fontsource-variable/fraunces": "^5.2.9",
+    "@fontsource-variable/inter-tight": "^5.2.7",
+    "@fontsource-variable/jetbrains-mono": "^5.2.8",
+    "@fontsource/ibm-plex-sans-arabic": "^5.2.9",
     "framer-motion": "^12.27.5",
     "lucide-react": "^0.562.0",
     "react": "^19.2.3",

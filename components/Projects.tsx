@@ -4,6 +4,9 @@ import { useLanguage } from '../services/LanguageContext';
 import { usePlayer } from '../services/PlayerContext';
 import { ExternalLink, Github, Book, Smartphone, Globe, Play, ChevronLeft, ChevronRight } from 'lucide-react';
 import { Language, Project } from '../types';
+import { TRANSLATIONS } from '../constants';
+
+type Translations = (typeof TRANSLATIONS)[Language];
 import ProjectModal from './ProjectModal';
 import AudioVisualizer from './ui/AudioVisualizer';
 import TechIcon from './ui/TechIcon';
@@ -119,7 +122,7 @@ const FeaturedProject: React.FC<{
   isPlaying: boolean;
   images: string[];
   logo?: string;
-  t: any;
+  t: Translations;
   language: Language;
 }> = ({ project, index, onSelect, onPlay, isPlaying, images, logo, t, language }) => {
   const isEven = index % 2 === 0;

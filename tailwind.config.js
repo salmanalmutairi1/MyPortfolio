@@ -12,10 +12,10 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['"Inter Tight"', 'system-ui', 'sans-serif'],
-        display: ['Fraunces', 'Georgia', 'serif'],
-        mono: ['"JetBrains Mono"', 'monospace'],
-        arabic: ['"IBM Plex Sans Arabic"', 'sans-serif'],
+        sans: ['"Inter Tight Variable"', '"Inter Tight Fallback"', 'system-ui', 'sans-serif'],
+        display: ['"Fraunces Variable"', '"Fraunces Fallback"', 'Georgia', 'serif'],
+        mono: ['"JetBrains Mono Variable"', '"JetBrains Mono Fallback"', 'monospace'],
+        arabic: ['"IBM Plex Sans Arabic"', '"IBM Plex Sans Arabic Fallback"', 'sans-serif'],
       },
       colors: {
         bg: '#0A0A0A',

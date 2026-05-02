@@ -16,7 +16,7 @@ applied during the redesign.
 |---|---|---|
 | No CSS-variable token system; colors hard-coded across components (`bg-[#0a0a0f]`, `text-gray-400`, `bg-brand-500/10`, etc.) | All components | `:root` token block in `src/index.css` (`--bg`, `--bg-elevated`, `--text-primary`, `--text-secondary`, `--text-muted`, `--border`, `--border-strong`, `--accent`, `--accent-soft`) |
 | Purple brand ramp (`brand-500 #8b5cf6`) used as accent | `tailwind.config.js`, every component | Re-mapped to **signal orange `#FF4D1F`** at every brand step; `--accent` exposed via CSS var |
-| Inter as the only sans (no editorial display, no Arabic-aware face) | `index.html` Google Fonts link, `tailwind.config.js` | Stack rebuilt: **Fraunces** (display) · **Inter Tight** (body) · **JetBrains Mono** (mono) · **IBM Plex Sans Arabic** (Arabic) |
+| Inter as the only sans (no editorial display, no Arabic-aware face) | `index.html`, `tailwind.config.js` | Stack rebuilt and **self-hosted via `@fontsource-variable/*` and `@fontsource/ibm-plex-sans-arabic`** (no external CDN): **Fraunces** (display) · **Inter Tight** (body) · **JetBrains Mono** (mono) · **IBM Plex Sans Arabic** (Arabic). `@font-face` fallback descriptors with `size-adjust` + `ascent-override` + `descent-override` eliminate CLS. |
 
 ## 2 · Glassmorphism / soft surfaces
 

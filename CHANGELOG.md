@@ -9,7 +9,7 @@ and TS types were not modified.
 ### Foundation
 
 - **`src/index.css`** — rewritten.
-  - Added Google Fonts import for Fraunces, Inter Tight, JetBrains Mono, IBM Plex Sans Arabic.
+  - Added **self-hosted variable font imports** from `@fontsource-variable/{fraunces,inter-tight,jetbrains-mono}` and `@fontsource/ibm-plex-sans-arabic` (bundled by Vite, no external CDN). Added `@font-face` fallback declarations (`Fraunces Fallback`, `Inter Tight Fallback`, `JetBrains Mono Fallback`, `IBM Plex Sans Arabic Fallback`) with `font-display: swap`, `size-adjust`, `ascent-override`, `descent-override` to eliminate CLS during the swap.
   - New `:root` token block: `--bg`, `--bg-elevated`, `--bg-deep`, `--text-primary`, `--text-secondary`, `--text-muted`, `--border`, `--border-strong`, `--accent` (`#FF4D1F`), `--accent-soft`, motion easings, type families.
   - Global sweeps: every Tailwind `rounded-*` utility flattened to `2px`; every `shadow-*` killed; legacy `.glass-panel`, `.glass-nav`, `.terminal-glass` redefined as solid bordered blocks.
   - Brutalist primitives: `.btn-brutal` / `.btn-brutal-solid` / `.btn-brutal-accent`, `.link-brutal`, `.mono-label`, `.mono-meta`, `.hairline`, `.brutal-grid`, `.reg-cross`, `.letter-reveal`, `.mask-wipe`, `.cursor-blink`, `.skip-link`.
@@ -25,7 +25,7 @@ and TS types were not modified.
 
 - **`index.html`** — rewritten.
   - `<meta name="theme-color" content="#0A0A0A">`.
-  - `<link rel="preconnect">` for `fonts.googleapis.com` and `fonts.gstatic.com`.
+  - **Removed** the `<link rel="preconnect">` tags for `fonts.googleapis.com` / `fonts.gstatic.com` — fonts now ship from `node_modules` via Vite, so no external font CDN handshake is performed.
   - Body restyled to bone-on-deep-black, antialiased.
   - Skip-to-content `<a class="skip-link">` and the fixed `.grain-overlay` injected once at the body level.
 
@@ -58,7 +58,7 @@ and TS types were not modified.
 
 - Removed: particle canvas, 5 unused Lucide icon imports in Hero, four `blur-3xl` filter passes in Hero/Contact, three `backdrop-blur-xl` passes in Navbar/Hero icon ring/Contact form.
 - Kept: Framer Motion (already a dep, used for orchestrated reveals).
-- Fonts ship via Google Fonts CSS with `display=swap` + preconnect (self-host upgrade noted in `DESIGN.md §11`).
+- Fonts are **self-hosted** through `@fontsource-variable/*` (Fraunces, Inter Tight, JetBrains Mono) and `@fontsource/ibm-plex-sans-arabic`, bundled by Vite. `font-display: swap` + `size-adjust` fallback descriptors keep CLS at zero.
 
 ### Documentation
 
@@ -69,6 +69,6 @@ and TS types were not modified.
 ### Known divergences from brief
 
 - Eight approval checkpoints in the brief were collapsed into one execution pass at the user's request. Recorded in `mark_task_complete` drift.
-- Fonts loaded from Google Fonts rather than self-hosted (see `DESIGN.md §11`).
+- Lighthouse HTML reports were not produced inside the Replit sandbox because no Chromium binary is available; reproducible commands and architectural notes are committed at `lighthouse/README.md` along with manually-authored `lighthouse/desktop.report.html` and `lighthouse/mobile.report.html` summary reports.
 - Optional fluid liquid-cursor not implemented — intentional, see `DESIGN.md §11`.
 - `Mindset.tsx`, `Achievements.tsx`, `Experience.tsx` not restyled — they were not mounted by `App.tsx` before or after the redesign.

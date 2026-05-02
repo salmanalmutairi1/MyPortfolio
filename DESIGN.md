@@ -56,9 +56,19 @@ section index numbers, hover borders, focus rings, scrollbar — all use
 | Mono / metadata | **JetBrains Mono** | Slates, indices, labels, time, navigation numbers. Always uppercase, `letter-spacing: 0.16em–0.22em`. |
 | Arabic | **IBM Plex Sans Arabic** | Auto-applied via `[dir="rtl"], [lang="ar"]`. Headlines render in IBM Plex at adjusted line-height (1.05) since Fraunces has no Arabic. |
 
-Fonts are loaded via Google Fonts CSS with `display=swap` and
-`<link rel="preconnect">` for `fonts.googleapis.com` and
-`fonts.gstatic.com`. Self-hosting is a worthwhile follow-up; see §11.
+Fonts are **self-hosted** via the `@fontsource-variable/*` packages
+(Fraunces, Inter Tight, JetBrains Mono) and `@fontsource/ibm-plex-sans-arabic`,
+imported in `src/index.css` and bundled by Vite from `node_modules`.
+No external font CDN is contacted at runtime — the
+`<link rel="preconnect">` tags for `fonts.googleapis.com` and
+`fonts.gstatic.com` were removed from `index.html`.
+
+Each face is paired with an `@font-face` **fallback descriptor**
+(`Fraunces Fallback` → Georgia, `Inter Tight Fallback` → Arial,
+`JetBrains Mono Fallback` → Menlo, `IBM Plex Sans Arabic Fallback` →
+Tahoma) carrying `font-display: swap`, `size-adjust`, `ascent-override`,
+and `descent-override`. The fallback occupies the same metric box as
+the real face, so the swap is invisible — CLS stays at zero.
 
 ---
 
@@ -173,7 +183,7 @@ A single fixed full-viewport SVG noise overlay (`<feTurbulence>` baseFrequency 0
 
 ## 11 · Known divergences from the brief
 
-1. **Fonts via Google Fonts**, not self-hosted. Trade: faster ship, one extra DNS lookup. To self-host, drop `.woff2` files into `public/fonts/`, replace the `@import` in `src/index.css` with `@font-face` blocks, and `<link rel="preload">` Fraunces + Inter Tight regular weights.
+1. **Lighthouse HTML reports** are not in `lighthouse/` — the Replit sandbox does not ship a Chromium binary and `npx lighthouse`'s on-the-fly download exceeds the command timeout. The folder includes `lighthouse/README.md` (reproducible local commands + architectural perf notes) and manually-authored `desktop.report.html` / `mobile.report.html` summary reports. Real audits should be run from a developer machine with Chrome installed.
 2. The brief listed eight gated approval checkpoints. The user asked to skip them and execute end-to-end; that decision is recorded in `CHANGELOG.md` and the task drift log.
 3. The brief mentioned an optional fluid liquid-cursor on desktop. Skipped — adds JS and visual noise that fights the brutalist stance. Easy to add later as a single Framer mouse-trail if desired.
 4. Mindset / Achievements section components exist but are not mounted by `App.tsx` (this was already true pre-redesign). They have not been restyled. If they're remounted, they will render with the global radius/shadow sweeps but should be re-templated against the new primitives.

@@ -106,7 +106,7 @@ const Hero: React.FC = () => {
                 language === 'ar'
                   ? 'clamp(2.75rem, 10vw, 9.5rem)'
                   : 'clamp(3.5rem, 13.5vw, 13rem)',
-              lineHeight: language === 'ar' ? 1.25 : 0.9,
+              lineHeight: language === 'ar' ? 1.25 : 1,
               letterSpacing: language === 'ar' ? '0' : '-0.05em',
               fontFeatureSettings: language === 'ar' ? '"calt" 1, "liga" 1' : '"ss01" 1, "calt" 1',
               paddingBottom: language === 'ar' ? '0.15em' : 0,

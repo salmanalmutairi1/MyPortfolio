@@ -325,9 +325,12 @@ body { color: var(--text-primary); }
   display: inline-block;
   overflow: hidden;
   vertical-align: top;
-  line-height: 0.95;
-  /* Reserve room for descenders so the mask doesn't clip glyph tails */
-  padding-bottom: 0.18em;
+  line-height: 1;
+  /* Reserve room for ascenders (italic Fraunces caps lean up) and descenders
+     (g/j/p/q/y plus italic terminals dip below baseline) so the mask
+     box never clips a glyph. */
+  padding-top: 0.12em;
+  padding-bottom: 0.22em;
 }
 .letter-reveal > span {
   display: inline-block;

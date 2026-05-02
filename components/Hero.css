@@ -1,0 +1,3 @@
+/* Intentionally empty.
+   All Hero styling lives in src/index.css and Tailwind utility classes.
+   This file exists so legacy `import './Hero.css'` references resolve cleanly. */

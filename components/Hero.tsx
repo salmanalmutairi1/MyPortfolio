@@ -93,36 +93,89 @@ const Hero: React.FC = () => {
             {t.hero.greeting}
           </motion.p>
 
-          {/* Architectural name — bilingual treatment, character mask reveal */}
+          {/* Architectural name — bilingual treatment.
+              EN: per-character mask reveal in Fraunces (last word italic for editorial cadence).
+              AR: per-word reveal — never split characters or letter-joining breaks. */}
           <h1
-            className={`font-display font-medium text-[var(--text-primary)] ${
-              language === 'ar' ? 'font-arabic-display' : ''
+            className={`relative font-display text-[var(--text-primary)] ${
+              language === 'ar' ? 'font-arabic' : ''
             }`}
             style={{
-              fontSize: 'clamp(3.5rem, 13.5vw, 13rem)',
-              lineHeight: language === 'ar' ? 1.05 : 0.92,
-              letterSpacing: language === 'ar' ? '-0.02em' : '-0.045em',
+              fontWeight: language === 'ar' ? 500 : 500,
+              fontSize:
+                language === 'ar'
+                  ? 'clamp(3rem, 11vw, 10.5rem)'
+                  : 'clamp(3.5rem, 13.5vw, 13rem)',
+              lineHeight: language === 'ar' ? 1.12 : 0.9,
+              letterSpacing: language === 'ar' ? '0' : '-0.05em',
+              fontFeatureSettings: language === 'ar' ? '"calt" 1, "liga" 1' : '"ss01" 1, "calt" 1',
             }}
             aria-label={t.hero.name}
           >
-            {nameWords.map((word, wi) => (
-              <span key={wi} className="inline-block mr-[0.18em] last:mr-0">
-                {Array.from(word).map((ch, ci) => (
-                  <span key={ci} className="letter-reveal">
+            {language === 'ar'
+              ? // AR — word-level reveal, characters stay joined
+                nameWords.map((word, wi) => (
+                  <span
+                    key={wi}
+                    className="inline-block letter-reveal align-baseline"
+                    style={{
+                      marginInlineEnd: wi < nameWords.length - 1 ? '0.32em' : 0,
+                    }}
+                  >
                     <span
                       style={
                         reduce
                           ? { transform: 'none' }
-                          : { animationDelay: `${300 + (wi * word.length + ci) * 28}ms` }
+                          : { animationDelay: `${300 + wi * 220}ms` }
                       }
                     >
-                      {ch}
+                      {word}
                     </span>
                   </span>
-                ))}
-              </span>
-            ))}
+                ))
+              : // EN — per-character cascade; final word italicized for editorial flourish
+                nameWords.map((word, wi) => {
+                  const isLast = wi === nameWords.length - 1;
+                  return (
+                    <span
+                      key={wi}
+                      className={`inline-block ${isLast ? 'italic' : ''}`}
+                      style={{
+                        marginInlineEnd: isLast ? 0 : '0.18em',
+                        fontStyle: isLast ? 'italic' : 'normal',
+                      }}
+                    >
+                      {Array.from(word).map((ch, ci) => (
+                        <span key={ci} className="letter-reveal">
+                          <span
+                            style={
+                              reduce
+                                ? { transform: 'none' }
+                                : { animationDelay: `${300 + (wi * 8 + ci) * 32}ms` }
+                            }
+                          >
+                            {ch}
+                          </span>
+                        </span>
+                      ))}
+                    </span>
+                  );
+                })}
           </h1>
+
+          {/* Underscore signature — accent rule pulled tight under the name */}
+          <motion.div
+            initial={reduce ? { opacity: 0 } : { scaleX: 0, opacity: 0 }}
+            animate={{ scaleX: 1, opacity: 1 }}
+            transition={{ duration: 0.7, delay: 1.15, ease: EASE_OUT }}
+            className="mt-4 flex items-center gap-3 origin-left"
+            aria-hidden="true"
+          >
+            <span className="block h-[2px] w-12 bg-[var(--accent)]" />
+            <span className="mono-label text-[var(--text-muted)]">
+              {language === 'ar' ? '— التوقيع' : '— SIGNATURE'}
+            </span>
+          </motion.div>
 
           {/* Role + typed line */}
           <motion.div

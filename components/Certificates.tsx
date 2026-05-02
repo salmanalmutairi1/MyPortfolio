@@ -111,7 +111,7 @@ const Certificates: React.FC = () => {
                   <span>
                     {language === 'ar'
                       ? `عرض الكل (${remainingCerts.length}+)`
-                      : `View All (${remainingCerts.length}+ More)`}
+                      : `View All (${remainingCerts.length}+ more)`}
                   </span>
                 </>
               )}

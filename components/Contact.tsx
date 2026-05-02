@@ -90,7 +90,7 @@ const Contact: React.FC = () => {
           subtitle={
             isRTL
               ? 'أرسل لي رسالة وستصلني فوراً على التليجرام. أرد عادةً خلال ساعات قليلة.'
-              : "Send a message — it lands on my Telegram instantly. I usually reply within a few hours."
+              : "Send me a message and I'll receive it instantly on Telegram. I typically respond within a few hours."
           }
         />
 
@@ -216,10 +216,10 @@ const Contact: React.FC = () => {
                     ) : formState === 'success' ? (
                       <>
                         <CheckCircle size={14} />
-                        <span>{isRTL ? 'تم الإرسال بنجاح' : 'Message Sent'}</span>
+                        <span>{isRTL ? 'تم الإرسال بنجاح! ✨' : 'Message Sent! ✨'}</span>
                       </>
                     ) : formState === 'error' ? (
-                      <span>{isRTL ? 'حدث خطأ، حاول مرة أخرى' : 'Error · Try Again'}</span>
+                      <span>{isRTL ? 'حدث خطأ، حاول مرة أخرى' : 'Error, please try again'}</span>
                     ) : (
                       <>
                         <Send size={14} className={isRTL ? 'rotate-180' : ''} />
@@ -230,8 +230,8 @@ const Contact: React.FC = () => {
 
                   <p className="mono-meta text-center">
                     {isRTL
-                      ? 'رسالتك آمنة وتصلني مباشرة'
-                      : 'SECURE · DELIVERED DIRECTLY'}
+                      ? '🔒 رسالتك آمنة ومشفرة وتصلني مباشرة'
+                      : '🔒 Your message is secure and delivered directly to me'}
                   </p>
                 </form>
               </div>

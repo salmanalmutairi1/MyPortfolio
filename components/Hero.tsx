@@ -134,17 +134,36 @@ const Hero: React.FC = () => {
                     </span>
                   </span>
                 ))
-              : // EN — per-character cascade; final word italicized for editorial flourish
+              : // EN — first word per-character cascade (upright Fraunces holds up
+                //      to per-letter masking); italic last word revealed as one
+                //      whole-word mask so its side-bearings don't get chopped
+                //      between per-letter overflow:hidden boxes.
                 nameWords.map((word, wi) => {
                   const isLast = wi === nameWords.length - 1;
+                  if (isLast) {
+                    return (
+                      <span
+                        key={wi}
+                        className="inline-block letter-reveal italic"
+                        style={{ fontStyle: 'italic', marginInlineStart: '0.04em' }}
+                      >
+                        <span
+                          style={
+                            reduce
+                              ? { transform: 'none' }
+                              : { animationDelay: `${300 + word.length * 32 + 80}ms` }
+                          }
+                        >
+                          {word}
+                        </span>
+                      </span>
+                    );
+                  }
                   return (
                     <span
                       key={wi}
-                      className={`inline-block ${isLast ? 'italic' : ''}`}
-                      style={{
-                        marginInlineEnd: isLast ? 0 : '0.18em',
-                        fontStyle: isLast ? 'italic' : 'normal',
-                      }}
+                      className="inline-block"
+                      style={{ marginInlineEnd: '0.18em' }}
                     >
                       {Array.from(word).map((ch, ci) => (
                         <span key={ci} className="letter-reveal">

@@ -1,4 +1,4 @@
-
+import React, { useState, useEffect } from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
 import { ArrowRight, FileText, Mail } from 'lucide-react';
 import { useLanguage } from '../services/LanguageContext';

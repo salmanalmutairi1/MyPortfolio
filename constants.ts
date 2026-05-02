@@ -92,7 +92,7 @@ export const TRANSLATIONS: Record<Language, Translation> = {
       cta: {
         projects: "View Projects",
         contact: "Contact Me",
-        cv: "View Resume",
+        cv: "View CV",
       },
     },
     about: {

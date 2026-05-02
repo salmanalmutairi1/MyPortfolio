@@ -102,26 +102,23 @@ const Hero: React.FC = () => {
             }`}
             style={{
               fontWeight: 500,
-              fontSize:
-                language === 'ar'
-                  ? 'clamp(2.75rem, 10vw, 9.5rem)'
-                  : 'clamp(3.5rem, 13.5vw, 13rem)',
-              lineHeight: language === 'ar' ? 1.25 : 0.88,
-              letterSpacing: language === 'ar' ? '0' : '-0.05em',
+              /* Both languages share the same display envelope — first name on
+                 one line, last name on the next, identical scale. */
+              fontSize: 'clamp(3rem, 11vw, 10.5rem)',
+              lineHeight: language === 'ar' ? 1.18 : 0.92,
+              letterSpacing: language === 'ar' ? '0' : '-0.045em',
               fontFeatureSettings: language === 'ar' ? '"calt" 1, "liga" 1' : '"ss01" 1, "calt" 1',
-              paddingBottom: language === 'ar' ? '0.15em' : 0,
+              paddingBottom: language === 'ar' ? '0.12em' : 0,
             }}
             aria-label={t.hero.name}
           >
             {language === 'ar'
-              ? // AR — word-level reveal, characters stay joined
+              ? // AR — word-level reveal, each name on its own line so layout
+                //      mirrors the English wordmark stack.
                 nameWords.map((word, wi) => (
                   <span
                     key={wi}
-                    className="inline-block letter-reveal align-baseline"
-                    style={{
-                      marginInlineEnd: wi < nameWords.length - 1 ? '0.32em' : 0,
-                    }}
+                    className="block letter-reveal align-baseline"
                   >
                     <span
                       style={
@@ -144,10 +141,9 @@ const Hero: React.FC = () => {
                     return (
                       <span
                         key={wi}
-                        className="inline-block letter-reveal italic"
+                        className="block letter-reveal italic"
                         style={{
                           fontStyle: 'italic',
-                          marginInlineStart: '0.04em',
                           /* italic glyphs have right-side overhang — reserve horizontal
                              room inside the mask box so the trailing 'i' / 'l' / 'h'
                              tails don't get clipped at the word's logical edge. */
@@ -168,11 +164,7 @@ const Hero: React.FC = () => {
                     );
                   }
                   return (
-                    <span
-                      key={wi}
-                      className="inline-block"
-                      style={{ marginInlineEnd: '0.18em' }}
-                    >
+                    <span key={wi} className="block">
                       {Array.from(word).map((ch, ci) => (
                         <span key={ci} className="letter-reveal">
                           <span

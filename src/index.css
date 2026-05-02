@@ -326,11 +326,12 @@ body { color: var(--text-primary); }
   overflow: hidden;
   vertical-align: top;
   line-height: 1;
-  /* Reserve room for ascenders (italic Fraunces caps lean up) and descenders
+  /* Reserve room for ascenders (italic Fraunces caps lean up, the dots on
+     i/j sit well above x-height at display sizes) and descenders
      (g/j/p/q/y plus italic terminals dip below baseline) so the mask
      box never clips a glyph. */
-  padding-top: 0.12em;
-  padding-bottom: 0.22em;
+  padding-top: 0.28em;
+  padding-bottom: 0.28em;
 }
 .letter-reveal > span {
   display: inline-block;
